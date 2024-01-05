@@ -1,0 +1,78 @@
+openapi: 3.1.0
+x-stoplight:
+  id: qdjijuhi7cdgc
+info:
+  title: auth__register
+  version: '1.0'
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/v1/auth/register:
+    parameters: []
+    post:
+      summary: 001_Register
+      operationId: AuthRegisterPost
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mfaEnabled:
+                    type: boolean
+                    x-stoplight:
+                      id: 2ey3awmlwejde
+                  active:
+                    type: boolean
+                    x-stoplight:
+                      id: jtkzgv9vhm59h
+                  secretImageUri:
+                    type: string
+                    x-stoplight:
+                      id: b1a4qrngtn1ki
+                required:
+                  - mfaEnabled
+                  - active
+                  - secretImageUri
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstname:
+                  type: string
+                  x-stoplight:
+                    id: 1nk9lps7tjesv
+                lastname:
+                  type: string
+                  x-stoplight:
+                    id: bq9rnqgujxj3h
+                email:
+                  type: string
+                  x-stoplight:
+                    id: 941z8qvcrvm4o
+                password:
+                  type: string
+                  x-stoplight:
+                    id: hzrr56qiytdz3
+                confirmPassword:
+                  type: string
+                  x-stoplight:
+                    id: ty87d8qntri75
+              required:
+                - firstname
+                - lastname
+                - email
+                - password
+                - confirmPassword
+            examples:
+              Example 1:
+                value:
+                  username: admin@sacvietiat.com
+                  password: '123456'
+      tags:
+        - template
+components: {}

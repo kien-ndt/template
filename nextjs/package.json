@@ -1,0 +1,39 @@
+{
+  "name": "template-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "merge-api": "rm -rf ./openapi/.merged.yaml || true && chmod +x ./openapi_merge_files.sh && ./openapi_merge_files.sh && openapi-merger -i ./openapi/.merged.yaml -o ./openapi/root.yaml",
+    "gen-api": "npm run merge-api && rm -rf ./apis/openapi || true && openapi-generator-cli generate -i ./openapi/root.yaml -o ./apis/openapi -g typescript-fetch --additional-properties=supportsES6=true,typescriptThreePlus=true && rm -rf ./openapi/.merged.yaml || true"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "next": "14.0.4",
+    "next-auth": "^4.24.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.49.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "openapi-merger": "^0.7.5",
+    "postcss": "^8",
+    "prettier": "^3.1.1",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
